@@ -4,7 +4,7 @@
 #define _imageTest
 
 void Image_Inversion_CUDA(unsigned char* Input_image, int Height, int Width, int Channels);
-
+void GreenShift_CUDA(unsigned char* Input_image, int Height, int Width);
 
 
 #endif

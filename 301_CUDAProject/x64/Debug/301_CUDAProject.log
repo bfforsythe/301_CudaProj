@@ -1,2 +1,16 @@
-﻿  imageTest.cpp
-  301_CUDAProject.vcxproj -> C:\Users\busin\source\repos\bfforsythe\301_CudaProj\301_CUDAProject\x64\Debug\301_CUDAProject.exe
+﻿  Compiling CUDA source file kernel.cu...
+  
+  C:\Users\busin\source\repos\bfforsythe\301_CudaProj\301_CUDAProject>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\bin\HostX64\x64" -x cu   -I"C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\include" -I"C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\x64\vc15\bin\opencv2" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\include" -I"C:\Users\busin\Documents\vcpkg\installed\x64-windows\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\busin\source\repos\bfforsythe\301_CudaProj\301_CUDAProject\x64\Debug\kernel.cu.obj "C:\Users\busin\source\repos\bfforsythe\301_CudaProj\301_CUDAProject\kernel.cu" 
+C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\include\opencv2/stitching/detail/warpers.hpp(235): warning #611-D: overloaded virtual function "cv::detail::PlaneWarper::buildMaps" is only partially overridden in class "cv::detail::AffineWarper"
+  
+C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\include\opencv2/stitching/detail/warpers.hpp(235): warning #611-D: overloaded virtual function "cv::detail::PlaneWarper::warp" is only partially overridden in class "cv::detail::AffineWarper"
+  
+C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\include\opencv2/stitching/detail/blenders.hpp(100): warning #611-D: overloaded virtual function "cv::detail::Blender::prepare" is only partially overridden in class "cv::detail::FeatherBlender"
+  
+C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\include\opencv2/stitching/detail/blenders.hpp(127): warning #611-D: overloaded virtual function "cv::detail::Blender::prepare" is only partially overridden in class "cv::detail::MultiBandBlender"
+  
+C:\Users\busin\source\repos\bfforsythe\301_CudaProj\301_CUDAProject\kernel.cu(17): error : too few arguments in function call
+  
+  1 error detected in the compilation of "C:/Users/busin/source/repos/bfforsythe/301_CudaProj/301_CUDAProject/kernel.cu".
+  kernel.cu
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 11.8.targets(785,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\bin\HostX64\x64" -x cu   -I"C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\include" -I"C:\Users\busin\Documents\Libraries (for VS22)\opencv\build\x64\vc15\bin\opencv2" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\include" -I"C:\Users\busin\Documents\vcpkg\installed\x64-windows\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\busin\source\repos\bfforsythe\301_CudaProj\301_CUDAProject\x64\Debug\kernel.cu.obj "C:\Users\busin\source\repos\bfforsythe\301_CudaProj\301_CUDAProject\kernel.cu"" exited with code 1.

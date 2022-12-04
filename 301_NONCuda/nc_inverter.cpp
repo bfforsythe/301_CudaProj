@@ -1,10 +1,15 @@
 #include <iostream>
 #include "opencv2/opencv.hpp"
+#include <chrono>
 
 using namespace cv;
+
 int main() {
 
-	Mat_<Vec3b> Input_image = imread("gregory.png");
+	auto start = std::chrono::high_resolution_clock::now();
+
+
+	Mat Input_image = imread("gregantuan.png");
 
 
 
@@ -26,9 +31,18 @@ int main() {
 
 			}
 		}
+
 	
 
-	imwrite("Inverted_gregory.png", Input_image);
+	imwrite("inverted_gregantuan.png", Input_image);
+
+
+	auto stop = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+	std::cout << "Time taken by function: "
+		<< duration.count() << " seconds" << std::endl;
 
 	return 0;
+
 }

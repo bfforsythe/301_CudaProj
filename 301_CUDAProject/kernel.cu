@@ -1,40 +1,45 @@
 ﻿#include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include "imageTest.h"
-
-__global__ void Inversion_CUDA(unsigned char* Image, int Channels);
-void Image_Inversion_CUDA(unsigned char* Input_image, int Height, int Width, int Channels) {
-
-	unsigned char* Dev_Input_Image = NULL;
-
-	// memAlloc
-
-	cudaMalloc((void**)&Dev_Input_Image, Height * Width * Channels);
-
-	cudaMemcpy(Dev_Input_Image, Input_image, Height * Width * Channels, cudaMemcpyHostToDevice);
-
-	dim3 Grid_Image;
-	Grid_Image.x = Width;
-	Grid_Image.y = Height;
+#include "opencv2/opencv.hpp"
 
 
-	Inversion_CUDA << <Grid_Image, 255 >> > (Dev_Input_Image, Channels);
+void Image_Inversion_CUDA(unsigned char* Input_Image, int Height, int Width, int Channels) {
+    unsigned char* Dev_Input_Image = NULL;
 
+    cudaMalloc((void**)&Dev_Input_Image, Height * Width * Channels);
 
-	cudaMemcpy(Input_image, Dev_Input_Image, Height * Width * Channels, cudaMemcpyDeviceToHost);
+    
+    cudaMemcpy(Dev_Input_Image, Input_Image, Height * Width * Channels, cudaMemcpyHostToDevice);
 
-	cudaFree(Dev_Input_Image);
+    dim3 Grid_Image(Width, Height);
+    Inversion_CUDA << <Grid_Image, 1 >> > (Dev_Input_Image, Channels); 
+    cudaMemcpy(Input_Image, Dev_Input_Image, Height * Width * Channels, cudaMemcpyDeviceToHost);
+    cudaFree(Dev_Input_Image);
+    cudaFree(Input_Image);
 }
 
-
-__global__ void Inversion_CUDA(unsigned char* Image, int Channels) {
-
-	int x = blockIdx.x;
-	int y = blockIdx.y;
-	int idx = (x + y * gridDim.x) * Channels;
+/*__global__ void Inversion_CUDA(unsigned char* Image, int Channels) {
+    int x = blockIdx.x;
+    int y = blockIdx.y;
+    int idx = (x + y * gridDim.x) * Channels;
 
 
-	for (int i = 0; i < Channels; i++) {
-		Image[idx + i] = 255 - Image[idx + i];
-	}
+
+    for (int i = 0; i < Channels; i++) {
+        Image[idx + i] = 255 - Image[idx + i];
+    }
+} */
+
+
+__global__ void GreenShift_CUDA(unsigned char* Image) {
+    int x = blockIdx.x;
+    int y = blockIdx.y;
+
+    int idx = (x + y * gridDim.x);
+   
+
+    for (int i = 0; i < idx; i++) {
+        Image[idx + 1] = 255 + Image[idx + 1];
+    }
 }
