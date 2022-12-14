@@ -24,9 +24,9 @@ int main() {
 				int g = Input_image.at<Vec3b>(j, k)[1];
 				int b = Input_image.at<Vec3b>(j, k)[2];
 
-				color[0] = 255 - r;
-				color[1] = 255 - g;
-				color[2] = 255 - b;
+				color[1] = 255 + g;
+				color[0] = r;
+				color[2] = b;
 
 
 			}
@@ -41,7 +41,7 @@ int main() {
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
 	std::cout << "Time taken by function: "
-		<< duration.count() << " seconds" << std::endl;
+		<< duration.count() << " milliseconds" << std::endl;
 
 	return 0;
 
